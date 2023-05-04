@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mulatodev.kafka.customers.model.Customer;
 import com.mulatodev.kafka.customers.service.CustomerService;
+
 /**
  *
  * @author ganaranjo
@@ -16,13 +17,18 @@ import com.mulatodev.kafka.customers.service.CustomerService;
 public class CustomerController {
 
     private final CustomerService customerService;
-    
+
     public CustomerController(CustomerService customerService){
+
+        super();
         this.customerService = customerService;
     }
     
     @PostMapping("/customers")
     public Customer save(@RequestBody Customer customer){
-        return this.customerService.save(customer);
+        
+        this.customerService.save(customer);
+        return customer;
     }
+
 }

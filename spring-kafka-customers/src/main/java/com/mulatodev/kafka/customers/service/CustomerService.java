@@ -12,16 +12,19 @@ import com.mulatodev.kafka.customers.service.CustomerEventsService;
 @Service
 public class CustomerService {
 
-    private CustomerEventsService customerEventsService;
+    private final CustomerEventsService customerEventsService;
     
     public CustomerService(CustomerEventsService customerEventsService){
+
+        super();
         this.customerEventsService = customerEventsService;
     }
     
     public Customer save(Customer customer) {
         
-        System.out.println("Received " + customer);
+        System.out.println("Received " + customer.getName());
         this.customerEventsService.publish(customer);
+        
         return customer;
     }
     

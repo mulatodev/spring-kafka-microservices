@@ -19,9 +19,9 @@ public class CustomerEventsService {
     }
     
     @KafkaListener (
-            topics = "${topic.customer.name:customers}",
+            topics = "${topic.customer.name:fpvdight-customer}",
             containerFactory = "kafkaListenerContainerFactory",
-            groupId = "grupo1"
+            groupId = "fpvdight-customer"
     )
     
     public void consumer(Event<?> event) {
